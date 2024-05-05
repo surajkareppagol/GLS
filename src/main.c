@@ -4,12 +4,14 @@
 
 #include "list.h"
 
-#define MAX 100
-
-int main()
+int main(int argc, char *argv[])
 {
   setlocale(LC_CTYPE, "");
-  listDirectory("../tests/");
+
+  if (argc == 1)
+    listDirectory(".");
+  else
+    listDirectory(argv[1]);
 
   return 0;
 }

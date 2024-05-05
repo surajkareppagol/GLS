@@ -2,9 +2,44 @@
 #include <sys/types.h>
 #include <dirent.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "list.h"
 #include "glyphs.h"
+
+int getType(char *extension)
+{
+  // Check for extensions and render it
+  if (!strcmp(extension, "c"))
+    return C;
+
+  else if (!strcmp(extension, "py"))
+    return PYTHON;
+
+  else if (!strcmp(extension, "cpp"))
+    return CPP;
+
+  else if (!strcmp(extension, "cs"))
+    return CSHARP;
+
+  else if (!strcmp(extension, "css"))
+    return CSS;
+
+  else if (!strcmp(extension, "html"))
+    return HTML;
+
+  else if (!strcmp(extension, "js"))
+    return JAVASCRIPT;
+
+  else if (!strcmp(extension, "md"))
+    return MARKDOWN;
+
+  else if (!strcmp(extension, "txt"))
+    return TEXT;
+
+  else
+    return UNKNOWN;
+}
 
 void render(char *filename)
 {
@@ -29,33 +64,8 @@ void render(char *filename)
 
   extension[index] = '\0';
 
-  // Check for extensions and render it
-  if (!strcmp(extension, "c"))
-    printf("%lc %s  ", glyphs[C], filename);
-
-  else if (!strcmp(extension, "py"))
-    printf("%lc %s  ", glyphs[PYTHON], filename);
-
-  else if (!strcmp(extension, "cpp"))
-    printf("%lc %s  ", glyphs[CPP], filename);
-
-  else if (!strcmp(extension, "cs"))
-    printf("%lc %s  ", glyphs[CSHARP], filename);
-
-  else if (!strcmp(extension, "css"))
-    printf("%lc %s  ", glyphs[CSS], filename);
-
-  else if (!strcmp(extension, "html"))
-    printf("%lc %s  ", glyphs[HTML], filename);
-
-  else if (!strcmp(extension, "js"))
-    printf("%lc %s  ", glyphs[JAVASCRIPT], filename);
-
-  else if (!strcmp(extension, "md"))
-    printf("%lc %s  ", glyphs[MARKDOWN], filename);
-
-  else if (!strcmp(extension, "txt"))
-    printf("%lc %s  ", glyphs[TEXT], filename);
+  int typeIndex = getType(extension);
+  printf("%lc %s  ", glyphs[typeIndex], filename);
 
   memset(extension, 0, sizeof(extension));
 }
@@ -64,6 +74,12 @@ void listDirectory(char *path)
 {
   DIR *dp = opendir(path);
   struct dirent *ep;
+
+  if (dp == NULL)
+  {
+    perror("Error ");
+    exit(EXIT_FAILURE);
+  }
 
   while ((ep = readdir(dp)) != NULL)
     render(ep->d_name);
