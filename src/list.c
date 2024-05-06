@@ -41,33 +41,40 @@ int getType(char *extension)
     return UNKNOWN;
 }
 
+char *getExtension(char *str, char delimeter)
+{
+  char *extension = malloc(sizeof(char) * 6);
+  int extensionI = 0;
+
+  // Split and get extension
+  for (int i = 0; i < strlen(str); i++)
+  {
+    if (extensionI)
+    {
+      extension[extensionI - 1] = str[i];
+      extensionI++;
+      continue;
+    }
+    else if (str[i] == delimeter && !extensionI)
+      extensionI = 1;
+  }
+
+  extension[extensionI - 1] = '\0';
+
+  return extension;
+}
+
 void render(char *filename)
 {
   if (!strcmp(filename, ".") || !strcmp(filename, ".."))
     return;
 
-  char extension[10];
-  int index = 0;
-  int extensionStart = 0;
-
-  // Split and get extension
-  for (int i = 0; i < strlen(filename); i++)
-  {
-    if (extensionStart)
-    {
-      extension[index++] = filename[i];
-      continue;
-    }
-    else if (filename[i] == '.' && !extensionStart)
-      extensionStart = 1;
-  }
-
-  extension[index] = '\0';
+  char *extension = getExtension(filename, '.');
 
   int typeIndex = getType(extension);
   printf("%lc %s  ", glyphs[typeIndex], filename);
 
-  memset(extension, 0, sizeof(extension));
+  free(extension);
 }
 
 void listDirectory(char *path)
