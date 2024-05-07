@@ -9,57 +9,31 @@
 
 int getType(char *extension)
 {
-  // Check for extensions and render it
-  if (!strcmp(extension, "c"))
-    return C;
+  for (int i = 0; i < extensions; i++)
+    if (!strcmp(extension, types[i]))
+      return i;
 
-  else if (!strcmp(extension, "py"))
-    return PYTHON;
-
-  else if (!strcmp(extension, "cpp"))
-    return CPP;
-
-  else if (!strcmp(extension, "cs"))
-    return CSHARP;
-
-  else if (!strcmp(extension, "css"))
-    return CSS;
-
-  else if (!strcmp(extension, "html"))
-    return HTML;
-
-  else if (!strcmp(extension, "js"))
-    return JAVASCRIPT;
-
-  else if (!strcmp(extension, "md"))
-    return MARKDOWN;
-
-  else if (!strcmp(extension, "txt"))
-    return TEXT;
-
-  else
-    return UNKNOWN;
+  return extensions;
 }
 
 char *getExtension(char *str, char delimeter)
 {
   char *extension = malloc(sizeof(char) * 6);
-  int extensionI = 0;
+  int eIndex = 0;
 
   // Split and get extension
   for (int i = 0; i < strlen(str); i++)
   {
-    if (extensionI)
+    if (eIndex)
     {
-      extension[extensionI - 1] = str[i];
-      extensionI++;
+      extension[(eIndex++) - 1] = str[i];
       continue;
     }
-    else if (str[i] == delimeter && !extensionI)
-      extensionI = 1;
+    else if (str[i] == delimeter && !eIndex)
+      eIndex = 1;
   }
 
-  extension[extensionI - 1] = '\0';
+  extension[eIndex - 1] = '\0';
 
   return extension;
 }
