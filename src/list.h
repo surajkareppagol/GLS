@@ -3,7 +3,8 @@
 
 int getType(char *extension);
 char *getExtension(char *str, char delimeter);
-void render(char *filename);
+void render(char **list, int count);
+void sort(char **list, int count);
 void listDirectory(char *path);
 
 #endif
