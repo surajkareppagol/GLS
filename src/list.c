@@ -6,6 +6,7 @@
 
 #include "list.h"
 #include "glyphs.h"
+#include "args.h"
 
 int getType(char *extension)
 {
@@ -42,15 +43,17 @@ void render(char **list, int count)
 {
   for (int i = 0; i < count; i++)
   {
-    if (!strcmp(list[i], ".") || !strcmp(list[i], ".."))
-      return;
-
     char *extension = getExtension(list[i], '.');
 
+    char *filename = malloc(sizeof(char) * 1000);
+
     int typeIndex = getType(extension);
-    printf("%lc %s  ", glyphs[typeIndex], list[i]);
+    sprintf(filename, "%lc %s", glyphs[typeIndex], list[i]);
+
+    printf("%s\n", filename);
 
     free(extension);
+    free(filename);
   }
 }
 
@@ -60,8 +63,8 @@ void sort(char **list, int count)
 
   for (int i = 0; i < count; i++)
   {
-    char *temporary = malloc(sizeof(char) * sizeof(list[0]));
-    char *max = malloc(sizeof(char) * sizeof(list[0]));
+    char *temporary = malloc(sizeof(char) * 1000);
+    char *max = malloc(sizeof(char) * 1000);
     strcpy(max, list[0]);
     int maxI = 0;
 
@@ -84,12 +87,13 @@ void sort(char **list, int count)
   }
 }
 
-void listDirectory(char *path)
+void listDirectory(OPTIONS *options)
 {
+
   char **list = (char **)malloc(sizeof(char *) * 10000);
   int files = 0;
 
-  DIR *dp = opendir(path);
+  DIR *dp = opendir(options->directory);
   struct dirent *ep;
 
   if (dp == NULL)
@@ -100,17 +104,18 @@ void listDirectory(char *path)
 
   while ((ep = readdir(dp)) != NULL)
   {
-    if (strcmp(ep->d_name, ".") && strcmp(ep->d_name, "..") && ep->d_name[0] != '.')
+    if (strcmp(ep->d_name, ".") && strcmp(ep->d_name, "..") && ep->d_name[0] != '.' || options->displayAll)
     {
-      list[files] = (char *)malloc(sizeof(char) * sizeof(ep->d_name));
-
+      list[files] = (char *)malloc(sizeof(char) * (strlen(ep->d_name) + 1));
       strcpy(list[files], ep->d_name);
       files++;
     }
   }
+
   closedir(dp);
 
   sort(list, files);
+
   render(list, files);
 
   free(list);
