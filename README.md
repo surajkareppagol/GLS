@@ -29,7 +29,11 @@ make clean
 Pass arguments via `command line`.
 
 ```sh
-./gls ../tests/
+./gls.out ../tests/File\ Types/
+```
+
+```sh
+./gls.out ../tests/File\ Types/ -a
 ```
 
 ## 🔍 Preview
@@ -38,11 +42,11 @@ Pass arguments via `command line`.
 
 **`ls`**
 
-![Normal ls Current](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/Normal%20ls%20Current.png)
+![Normal ls Current](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/LS%20Current.png)
 
 **`gls`**
 
-![Glyph ls Current](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/Glyph%20ls%20Current.png)
+![Glyph ls Current](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/GLS%20Current.png)
 
 ---
 
@@ -50,8 +54,14 @@ Pass arguments via `command line`.
 
 **`ls`**
 
-![Normal ls](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/Normal%20ls.png)
+![Normal ls](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/LS%20Types.png)
 
 **`gls`**
 
-![Glyph ls](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/Glyph%20ls.png)
+![Glyph ls](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/GLS%20Types.png)
+
+---
+
+`-a Argument`
+
+![Glyph ls](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/GLS%20Types%20A.png)
