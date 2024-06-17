@@ -4,7 +4,7 @@
 
 The icons are glyphs from [Nerd Fonts](https://www.nerdfonts.com/).
 
-![GLS](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/GLS.gif)
+![GLS](https://raw.githubusercontent.com/surajkareppagol/Assets/main/15%20-%20GLS/GLS.gif)
 
 ## ⚙️ Usage
 
@@ -42,11 +42,11 @@ Pass arguments via `command line`.
 
 **`ls`**
 
-![Normal ls Current](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/LS%20Current.png)
+![Normal ls Current](https://raw.githubusercontent.com/surajkareppagol/Assets/main/15%20-%20GLS/LS%20Current.png)
 
 **`gls`**
 
-![Glyph ls Current](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/GLS%20Current.png)
+![Glyph ls Current](https://raw.githubusercontent.com/surajkareppagol/Assets/main/15%20-%20GLS/GLS%20Current.png)
 
 ---
 
@@ -54,14 +54,14 @@ Pass arguments via `command line`.
 
 **`ls`**
 
-![Normal ls](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/LS%20Types.png)
+![Normal ls](https://raw.githubusercontent.com/surajkareppagol/Assets/main/15%20-%20GLS/LS%20Types.png)
 
 **`gls`**
 
-![Glyph ls](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/GLS%20Types.png)
+![Glyph ls](https://raw.githubusercontent.com/surajkareppagol/Assets/main/15%20-%20GLS/GLS%20Types.png)
 
 ---
 
 `-a Argument`
 
-![Glyph ls](https://raw.githubusercontent.com/surajkareppagol/Project-Assets/main/GLS/GLS%20Types%20A.png)
+![Glyph ls](https://raw.githubusercontent.com/surajkareppagol/Assets/main/15%20-%20GLS/GLS%20Types%20A.png)
